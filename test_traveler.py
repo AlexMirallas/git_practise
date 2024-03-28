@@ -1,6 +1,6 @@
 destinations = ["Paris, France", "Shanghai, China","Los Angeles, USA", "Sao Paulo, Brazil","Cairo, Egypt"]
 
-test_traveler = ["Erin Wilkes", "Shangai, China",["historical site","art"]]
+test_traveler = ["Erin Wilkes", "Shanghai, China",["historical site","art"]]
 
 attractions = [[] for i in range(len(destinations))]
 
@@ -54,7 +54,21 @@ def find_attractions(destination,interests):
                 attractions_with_interest.append(possible_attraction[0])
     return attractions_with_interest
 
-print(find_attractions("Los Angeles, USA",["art"]))
+#print(find_attractions("Los Angeles, USA",["art"]))
+
+def get_attractions_for_traveler(traveler):
+    traveler_destination =  traveler[1]
+    traveler_interests = traveler[2]
+    traveler_attractions = find_attractions(traveler_destination,traveler_interests)
+    traveler_attractions = ", ".join(traveler_attractions)
+    interests_string = ("Hi "+ str(traveler[0]) + ", we think you will like these places around " +str(traveler_destination)+": " + traveler_attractions)
+
+    return interests_string
+
+print(get_attractions_for_traveler(test_traveler))
+print(get_attractions_for_traveler(["Dereck Smill", "Paris, France", ["monument"]]))
+
+
 
 
 
